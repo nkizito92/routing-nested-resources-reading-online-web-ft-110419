@@ -1,7 +1,14 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    # if params[:author_id]
+    #   @posts = Author.find(params[:author_id]).posts
+    # else
+    #   @posts = Post.all
+    # end
+    
+        # Just wanted to see if I can make a ternary version of this, Success!!
+    params[:author_id] ? (@posts = Author.find(params[:author_id]).posts) : (@posts = Post.all)
   end
 
   def show
